@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping SYSTEM
+        "classpath://org/hibernate/hibernate-configuration-3.0.dtd">
+
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="entity.Student" table="student">
+        <id name="id">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="sequence">student_id_seq</param>
+                <param name="increment_size">1</param>
+            </generator>
+        </id>
+
+        <property name="age" column="age"/>
+        <property name="birth_date" column="birth_date"/>
+        <property name="course" column="course"/>
+        <property name="first_name" column="first_name"/>
+
+    </class>
+</hibernate-mapping>
