@@ -1,0 +1,5 @@
+JDBC
+1. Connection (database uchun) datasource
+2. Statement, query
+3. execute, ResultSet
+4. Mapping ResultSet to object

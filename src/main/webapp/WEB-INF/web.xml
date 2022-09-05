@@ -6,11 +6,20 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>Hello</servlet-name>
-    <servlet-class>HelloServlet</servlet-class>
+    <servlet-class>servlet.HelloServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>Student</servlet-name>
+    <servlet-class>servlet.StudentServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>Hello</servlet-name>
     <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Student</servlet-name>
+    <url-pattern>/student</url-pattern>
   </servlet-mapping>
 </web-app>
