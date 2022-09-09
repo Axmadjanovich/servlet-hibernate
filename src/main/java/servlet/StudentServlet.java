@@ -2,6 +2,7 @@ package servlet;
 
 import entity.Student;
 import repository.StudentJdbcDao;
+import repository.StudentRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +17,12 @@ import java.util.TreeMap;
 public class StudentServlet extends HttpServlet {
 
     private StudentJdbcDao studentJdbcDao;
+    private StudentRepository studentRepository;
 
     @Override
     public void init() throws ServletException {
         studentJdbcDao = new StudentJdbcDao();
+        studentRepository = StudentRepository.getInstance();
     }
 
     @Override
@@ -33,7 +36,7 @@ public class StudentServlet extends HttpServlet {
 
         System.out.println(params);
 
-        List<Student> students = studentJdbcDao.getAll(params);
+        Student students = studentRepository.loadById(Integer.valueOf(params.get("id")));
 
         resp.setContentType("application/json");
 
@@ -45,7 +48,7 @@ public class StudentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        byte[] body = req.getInputStream().readAllBytes();
+//        byte[] body =  req.getInputStream().readAllBytes();
         String name = req.getParameter("name"); // => @RequestParam String name
         Enumeration<String> parameterNames = req.getParameterNames();
         System.out.println(parameterNames.asIterator());

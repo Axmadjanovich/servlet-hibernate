@@ -1,5 +1,7 @@
 package servlet;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Student;
 import repository.StudentRepository;
 
@@ -36,9 +38,18 @@ public class HelloServlet extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
 
-        Student student = new Student(null, "Ulug'bek", 22, new Date(), "Java");
+        byte[] body = req.getInputStream().readAllBytes();
+        String bodyStr = new String(body);
 
-        StudentRepository repo = new StudentRepository();
+        System.out.println(bodyStr);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonParser jsonParser = objectMapper.createParser(bodyStr);
+        Student student = jsonParser.readValueAs(Student.class);
+
+//        Student student = new Student(null, "Ulug'bek", 22, new Date(), "Java");
+//
+        StudentRepository repo = StudentRepository.getInstance();
         repo.addStudent(student);
 
         PrintWriter out = resp.getWriter();

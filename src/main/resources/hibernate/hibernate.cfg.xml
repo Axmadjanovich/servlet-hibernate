@@ -9,6 +9,10 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.password">imueaa0131</property>
         <property name="connection.username">postgres</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.connection.autocommit">true</property>
+
         <mapping resource="hibernate/student.hbm.xml"/>
+        <mapping class="entity.Course"/>
     </session-factory>
 </hibernate-configuration>

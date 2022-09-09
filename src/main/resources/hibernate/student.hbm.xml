@@ -13,7 +13,7 @@
 
         <property name="age" column="age"/>
         <property name="birth_date" column="birth_date"/>
-        <property name="course" column="course"/>
+        <many-to-one name="course"/>
         <property name="first_name" column="first_name"/>
 
     </class>
